@@ -16,7 +16,7 @@ API_TOKEN = '5376696497:AAEm3Sei-8FXw7JFbWJYM6omw7shlypS03g'
 bot: TeleBot = telebot.TeleBot(API_TOKEN)
 
 db = Database()
-db.bind(provider='mysql', host='77.91.103.196', user='admin_upd', passwd='Admin_updadmin_updadmin_upd1312', db='admin_upd')
+db.bind(provider='sqlite', filename='database.sqlite', create_db=True)
 
 
 class PhotoUpload(db.Entity):
