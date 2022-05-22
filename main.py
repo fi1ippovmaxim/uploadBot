@@ -12,11 +12,11 @@ from PIL import Image, ImageDraw
 from pony.orm import *
 from telebot import TeleBot
 
-API_TOKEN = '5267739513:AAFZMtJ563Qtx1F8wL9dUVMxlwxSPRLhKGE'
+API_TOKEN = '5376696497:AAEm3Sei-8FXw7JFbWJYM6omw7shlypS03g'
 bot: TeleBot = telebot.TeleBot(API_TOKEN)
 
 db = Database()
-db.bind(provider='sqlite', filename='database.sqlite', create_db=True)
+db.bind(provider='mysql', host='77.91.103.196', user='admin_upd', passwd='Admin_updadmin_updadmin_upd1312', db='admin_upd')
 
 
 class PhotoUpload(db.Entity):
@@ -29,7 +29,6 @@ class PhotoUpload(db.Entity):
 
 
 def up_photo(img_path):
-    tor_proxy = dict(http='socks5h://localhost:9150', https='socks5h://localhost:9150')
     i = Image.open(img_path)
     new_n = ''.join(
         [str(random.choice(string.ascii_lowercase + string.ascii_uppercase + string.digits)) for _
@@ -38,8 +37,7 @@ def up_photo(img_path):
     i.save(new_n)
     i.close()
     f = open(new_n, 'rb')
-    resp = requests.post('https://telegra.ph/upload', files={'file': ('file', f, 'image/png')},
-                         proxies=tor_proxy).json()
+    resp = requests.post('https://telegra.ph/upload', files={'file': ('file', f, 'image/png')},).json()
     lnk = "https://telegra.ph" + resp[0]['src']
     f.close()
     os.remove(new_n)
