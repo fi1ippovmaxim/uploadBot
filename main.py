@@ -143,5 +143,5 @@ def echo_message(message):
 
 
 db.generate_mapping(create_tables=True)
-
-bot.infinity_polling()
+while True:
+    bot.infinity_polling()
