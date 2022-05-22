@@ -44,8 +44,6 @@ def up_photo(img_path):
     return lnk
 
 
-pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
-
 
 def get_coordinates(path):
     img = Image.open(path)
